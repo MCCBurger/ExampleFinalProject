@@ -1,5 +1,6 @@
 package com.example.examplefinalproject
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -26,26 +27,36 @@ class MainActivity : AppCompatActivity() {
         val btnLogin = findViewById<Button>(R.id.btnLogin)
 
         btnLogin.setOnClickListener{
-            when (CheckLogin(txtLogin.text.toString(),txtPassword.text.toString())){
+            when (checkLogin(txtLogin.text.toString(), txtPassword.text.toString())) {
 
                 LoginSuccess.login -> {
-                    Toast.makeText(applicationContext, getString(R.string.errMessageLogin),Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.errMessageLogin),
+                        Toast.LENGTH_LONG
+                    ).show()
                     txtLogin.requestFocus()
                 }
-                LoginSuccess.password->{
-                    Toast.makeText(applicationContext, getString(R.string.errMessagePassword),Toast.LENGTH_LONG).show()
+                LoginSuccess.password -> {
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.errMessagePassword),
+                        Toast.LENGTH_LONG
+                    ).show()
                     txtPassword.requestFocus()
                 }
 
                 else ->
-                    Toast.makeText(applicationContext,"Success" ,Toast.LENGTH_LONG).show()
+                    //Toast.makeText(applicationContext, "Success", Toast.LENGTH_LONG).show()
+                    startActivity(Intent(this@MainActivity, MainClassList::class.java))
+
 
             }
         }
 
     }
 
-    fun CheckLogin(txtLogin:String, txtPassword: String):LoginSuccess{
+    private fun checkLogin(txtLogin:String, txtPassword: String):LoginSuccess{
         val holdLogin = "Brian"
         val holdPass = "password"
 
