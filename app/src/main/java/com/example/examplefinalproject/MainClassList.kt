@@ -50,14 +50,14 @@ class MainClassList : AppCompatActivity() {
                 doBirth =
                     spMonth.selectedItem.toString() + "/" + txtDay.text.toString() + "/" + txtYear.text.toString()
 
-                val nextScreen = Intent(this@MainClassList, ChooseClass::class.java)
+                val nextScreen = Intent(this@MainClassList, ChooseClass2::class.java)
                 nextScreen.putExtra("FirstName", firstName.text.toString())
                 nextScreen.putExtra("LastName", lastName.text.toString())
                 nextScreen.putExtra("phone", phone.text.toString())
                 nextScreen.putExtra("BirthDate", doBirth)
 
                 if (spnDegree.visibility == View.VISIBLE) {
-                    nextScreen.putExtra("isDegreeCert", "Degree")
+                    nextScreen.putExtra("isDegree", "Degree")
                     nextScreen.putExtra("degreeCert", spnDegree.selectedItem.toString())
                 } else {
                     nextScreen.putExtra("isDegree", "Certificate")
@@ -66,6 +66,7 @@ class MainClassList : AppCompatActivity() {
                 //Start Activity
                 startActivity(nextScreen)
             }
+
         }
     }
     private fun checkData():Boolean{
